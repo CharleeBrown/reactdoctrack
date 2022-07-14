@@ -31,7 +31,7 @@ function App() {
           Learn React
         </a>
       </header> */}
-    <Logins name="Lee"></Logins>
+    <Logins ></Logins>
     </div>
    
   </ChakraProvider>

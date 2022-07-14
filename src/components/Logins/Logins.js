@@ -1,28 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import styles from './Logins.module.css';
-import { Input, Button, Box,Container, Center, Image, Flex, Badge, Text, Spacer, VStack} from '@chakra-ui/react';
+import {   FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,  Input, Button, Box,Container, Center, Image, Flex, Badge, Text, Spacer, VStack} from '@chakra-ui/react';
+import { getValue } from '@testing-library/user-event/dist/utils';
 
-const Logins = (props) => (
-  
+function Logins(props) {
+  let [count, setCount] = useState(0);
+ 
+  return(
   <div className={styles.Logins}>
-    <VStack>
-      
-      <Container maxW='lg' bg='blue.600' color='white'>
-            <h1>Hello, {props.name}</h1>
-      </Container>
-        
+            <FormControl>
+              <Container maxW='lg'>
+              <FormLabel htmlFor='namer'> Hello, {props.name}   </FormLabel>
+                <Input id='namer'placeholder='Test' onChange={e => setCount(e.target.value)} color='black'/>
+              <FormLabel htmlFor='passwrd'>Enter Password</FormLabel>
+                <Input type='password' onChange={e => setCount(e.target.value)}/>
+                <FormHelperText>We'll never share your email.</FormHelperText>
+                <Button onClick={() => alert(count)} colorScheme='blue'>Submit Email</Button>
+                </Container>
         <Spacer />
-        <Container maxW='lg' bg='blue.600' color='white' maxH='lg'>
-            <Box padding='4'>
-            <Input placeholder='Test' color='black'/>
-            <Button onClick={() => console.log("test")} colorScheme='blue'></Button>
-            </Box>
-        
-        </Container>
-    </VStack>
+        </FormControl>
   </div>
 );
+  }
 
 
 export default Logins;
